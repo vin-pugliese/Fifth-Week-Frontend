@@ -6,14 +6,17 @@ export const ListRepository = () =>{
     const [records, setRecords] = useState([]);
 
     const [changed, setChanged] = useState(false);
-
     const [nome, setNome] = useState('');
     const [lastName, setLastName] = useState('');
     const [timeStart, setTimeStart] = useState('');
     const [timeFinish, setTimeFinish] = useState('');
 
+    
+
+    
 
 
+    //----------------------GET
     React.useEffect( ()=>{
         fetch('http://localhost:8080/timer/api/v1')
         .then(response =>{
@@ -35,36 +38,28 @@ export const ListRepository = () =>{
 
     const handleChangeNome = event =>{
         setNome(event.target.value);
+        setTimeStart(getCurrentDate().toString())
     }
 
     const handleChangeLastName = event =>{
         setLastName(event.target.value);
     }
-/*
-    const handleChangeTimeStart = () =>{
-        setTimeStart(this.getCurrentDate().toString());
-    }
-
-    const handleChangeTimeFinish = () =>{
-        setTimeFinish(this.getCurrentDate().toString());
-    }
-*/
 
 
+  
     const handleSubmit = event =>{
         event.preventDefault();
-
-        //this.handleChangeTimeStart();
 
         const record = {
             nome: nome,
             lastName: lastName,
-            timeStart: getCurrentDate().toString(),
+            timeStart: timeStart,
             timeFinish: timeFinish
         };
 
         
-        axios.post('http://localhost:8080/timer/api/v1', {nome: record.nome, 
+        axios.post('http://localhost:8080/timer/api/v1', {
+                                                        nome: record.nome, 
                                                         lastName: record.lastName,
                                                         timeStart: timeStart,
                                                         timeFinish: ''}).
@@ -77,16 +72,37 @@ export const ListRepository = () =>{
     }
 
 
+    //------------------------PUT   
+    const handlePut = id =>{
+    
+        console.log(id);
+
+        axios.put('http://localhost:8080/timer/api/v1/?id='+id+
+                        '&finish='+getCurrentDate().toString()).
+        then(()=>{
+            setRecords(records);
+            setChanged(true);
+        })
+        setChanged(false);
+    }
+
+
+    /**
+     * @returns  the actual date time
+     */
     function getCurrentDate(separator=''){
         let newDate = new Date();
         let h = newDate.getHours();
         let m = newDate.getMinutes();
         let s = newDate.getSeconds();
         
-    return h+":"+m+":"+s ;
+    return h + ":" + m + ":" + s ;
     }
 
 
+    /**
+     * Render
+     */
     return(
         <div className="container">
             <form className="post-form" onSubmit={handleSubmit}>
@@ -106,8 +122,13 @@ export const ListRepository = () =>{
             </form>
 
             {records.length >0 && records.map(record =>
-                <div key={record.id} >
-                    <div>ID: {record.id}</div>
+                <div id="container" key={record.id} >
+                    
+                    <div id="idRecord" className=""> 
+                        ID: {record.id}
+                        <button onClick={() => handlePut(record.id)}>STOP</button>
+                    </div>
+
                     <div>name: {record.nome}</div>
                     <div>lastName: {record.lastName}</div>
                     <div>Start: {record.timeStart}</div>
