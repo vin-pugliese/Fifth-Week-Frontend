@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Form-Validation</title>
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">Form Validation</h2>
+        <div class="description">
+            <p>
+                Nel campo nome vengono accettate le lettere maiuscole(A-Z), le lettere
+                minusole(a-z), le lettere minuscole accentate(sia acute che gravi) e lo spazio,
+                purchè non in prima posizione.
+                nel campo matricola vengono accetati esclusivamente caratteri numerici che
+                formano un numero valido compreso da 1 a 2000.
+
+            </p>
+        </div>
+
+        <div class="form-container">
+            <form 
+            action="http://google.it" 
+            method="get"
+            onsubmit="return validate()"
+            name="form-dati"
+            id="form-dati"
+            > 
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" class="nome"> 
+
+            <label for="matricola">Matricola [1:2000]</label>
+            <input type="text" name="matricola" id="matricola" class="matricola">
+            
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </form>
+        </div>
+
+        </p>
+
+    </div>
+   
+
+
+
+
+
+    <script type ="text/javascript" src="form.js"></script>
+</body>
+</html>
