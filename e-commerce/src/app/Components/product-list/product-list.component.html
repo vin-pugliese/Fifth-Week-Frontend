@@ -1,20 +1,11 @@
-<mat-accordion>
-    <div class="x"*ngFor="let product of products">
-        <mat-expansion-panel hideToggle>
-            <mat-expansion-panel-header>
-                    <mat-panel-title class="paneltitle">
-                    <p class="name">{{product.nome}}</p>
-                    <p class="qty">   QTY: {{product.qty}}</p>
-                    </mat-panel-title>
-                <mat-panel-description>
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-        <p class="productdescription">{{product.description}}</p>
-        <form #addtocart ="ngForm" (ngSubmit)="handleSubmit(addtocart.value)">
-            <input type="number" name="qty" id="inputqty" ngModel>
-            <input type="text" name="prodID" id="prodID" value="{{product.id}}" ngModel>
-            <input type="submit" value="aggiungi a carello">
-        </form>
-        </mat-expansion-panel>
+
+    <div class="x" *ngFor="let product of products" [ngStyle]="{'background-color':'rgb(87, 87, 87)'}">
+        <div class="title">
+                <p class="name">{{product.nome}}</p>
+                <p class="qty">   QTY: {{product.qty}}</p>
+            </div>
+        
+            <div class="description">
+                <a [routerLink]="['/product/',product.id]">Product Details</a>
+            </div>
     </div>
-  </mat-accordion>

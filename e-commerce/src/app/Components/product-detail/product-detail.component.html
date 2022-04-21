@@ -1,0 +1,11 @@
+<div class="nome">
+    Nome: {{product?.nome}}
+</div>
+<div class="description">Description: {{product?.description}}</div>
+<div class="qty">QTY: {{product?.qty}}</div>
+<div class="form">
+    <form #addtocart ="ngForm" (ngSubmit)="handleSubmit(addtocart.value)">
+        <input type="number" name="qty" id="inputqty" ngModel>
+        <input type="submit" value="aggiungi a carello">
+    </form>
+</div>

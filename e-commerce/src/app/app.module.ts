@@ -10,12 +10,14 @@ import { MaterialModule } from './Material.module';
 import {HttpClientModule} from '@angular/common/http'
 import {FormsModule} from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProductDetailComponent } from './Components/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
