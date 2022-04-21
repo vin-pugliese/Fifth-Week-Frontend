@@ -1,0 +1,33 @@
+
+.x{
+    margin: 100px 100px 10px 100px;
+    width:100%;
+    background-color: rgb(87, 87, 87);
+    color: rgb(4, 175, 225);
+    font-size: xx-large;
+    border-radius: 3%;
+}
+
+.paneltitle{
+    border-bottom: 1px solid black;
+}
+
+.productdescription{
+    font-size: x-large;
+    font-style: oblique;
+    color: rgb(6, 148, 192);
+}
+
+
+.name{
+    width: 50%;
+}
+.qty{
+    text-align: right;
+    width:50%;
+    margin-left: 100px;
+}
+
+.prodId{
+    display: none;
+}
